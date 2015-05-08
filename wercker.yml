@@ -18,6 +18,7 @@ build:
             name: go build
             code: |
               go build -v ./...
+              ls -lh
 
         - script:
             name: go test
@@ -30,4 +31,3 @@ deploy:
             name: list output
             code: |
               ls -lha
-              ls -lha build/
