@@ -1,15 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"strings"
+	"log"
+	"net/http"
 )
 
-func greet(name string) string {
-	s := []string{"hello", name}
-	return strings.Join(s, ", ")
+func main() {
+	http.HandleFunc("/", handleIndex)
+	http.ListenAndServe(":5000", nil)
 }
 
-func main() {
-	fmt.Printf(strings.Join([]string{greet("world"), "\n"}, ""))
+func handleIndex(w http.ResponseWriter, r *http.Request) {
+	log.Println("GET /")
+	w.Write([]byte("hello!"))
 }

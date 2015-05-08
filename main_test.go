@@ -1,13 +1,18 @@
 package main
 
 import (
+	"net/http"
+	"net/http/httptest"
 	"testing"
 )
 
-func TestGreet(t *testing.T) {
-	var greeting string
-	greeting = greet("world")
-	if greeting != "hello, world" {
-		t.Error("Expected 'hello, world', got ", greeting)
+func TestHandleIndexReturnsOK(t *testing.T) {
+	request, _ := http.NewRequest("GET", "/", nil)
+	response := httptest.NewRecorder()
+
+	handleIndex(response, request)
+
+	if response.Code != http.StatusOK {
+		t.Fatalf("Response status not %v", "200", response.Code)
 	}
 }
