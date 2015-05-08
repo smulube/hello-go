@@ -4,12 +4,15 @@ build:
     # The steps that will be executed on build
     steps:
         - setup-go-workspace
+
         - script:
             name: go get
             code: |
               cd $WERCKER_SOURCE_DIR
               go version
               go get ./...
+
+        - golint
 
         - script:
             name: go build
