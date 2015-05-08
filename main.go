@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+func greet(name string) string {
+	s := []string{"hello,", name, "\n"}
+	return strings.Join(s, " ")
+}
 
 func main() {
-	fmt.Printf("hello, world\n")
+	fmt.Printf(greet("world"))
 }
