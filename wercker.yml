@@ -23,3 +23,11 @@ build:
             name: go test
             code: |
               go test ./...
+
+deploy:
+    steps:
+        - script:
+            name: list output
+            code: |
+              ls -lha
+              ls -lha build/
